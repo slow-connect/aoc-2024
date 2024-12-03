@@ -30,4 +30,5 @@ def p2(data):
             res += val * l2[val]
     print(res)
 
+p1(data)
 p2(data)

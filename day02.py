@@ -38,4 +38,5 @@ def p2(data):
                     cnt += 1
                     break
     print(cnt)
+p1(data)
 p2(data)
