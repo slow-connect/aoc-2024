@@ -1,9 +1,6 @@
 import aoc
-import re
-
 
 data = aoc.get_lst(4)[:-1]
-# data = "MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX".split("\n")
 
 def p1(data):
     cnt = 0
