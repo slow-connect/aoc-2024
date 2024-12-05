@@ -2,7 +2,7 @@ import aoc
 
 data = aoc.get_lst(5)
 data = [s.strip() for s in data]
-page_order = []
+page_dict = {}
 updates = []
 e = False
 for line in data:
@@ -11,15 +11,11 @@ for line in data:
     elif e:
         updates.append(line)
     else:
-        page_order.append(line.split('|'))
-
-page_dict = {}
-for i in range(len(page_order)):
-    if page_order[i][0] not in page_dict:
-        page_dict[page_order[i][0]] = [page_order[i][1]]
-    else:
-        page_dict[page_order[i][0]].append(page_order[i][1])
-
+        t = line.split('|')
+        if t[0] not in page_dict:
+            page_dict[t[0]] = [t[1]]
+        else:
+            page_dict[t[0]].append(t[1])
 
 cnt_p1 = 0
 cnt_p2 = 0
