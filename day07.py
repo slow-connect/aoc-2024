@@ -63,4 +63,8 @@ def p2(data):
                 cnt += res
                 break
     print(cnt)
-p1(data)
+
+p1(data) # 10741443549536 in < 1s
+p2(data) # 500335179214836 in 10:10 min
+
+## thought of doing in in trees, so I don't have to make too many calculations, but this was done while I was looking for how to make trees.
