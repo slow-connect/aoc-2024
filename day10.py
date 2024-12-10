@@ -1,8 +1,5 @@
 import aoc
 import heapq
-from collections import deque
-
-
 
 map = """
 89010123
@@ -50,50 +47,17 @@ pq = []
 for s in starts:
     heapq.heappush(pq, ([s], 1))
 
-def find_reachable_nines(start_x, start_y, grid):
-  visited, reachable_nines = set(), set()
-  queue = deque([(start_x, start_y, 0)])
 
-  while queue:
-    x, y, current_height = queue.popleft()
-
-    if (x, y) in visited:
-      continue
-
-    visited.add((x, y))
-
-    if grid[x][y] == 9:
-      reachable_nines.add((x, y))
-      continue
-
-    for next_x, next_y in get_neighbors(x, y, grid):
-      next_height = grid[next_x][next_y]
-
-      if next_height == current_height + 1:
-        queue.append((next_x, next_y, next_height))
-
-  return reachable_nines
-
-
-
-trailheads = find_trailstarts(map)
-p1 = 0
-for x, y in trailheads:
-    reachable_nines = find_reachable_nines(start_x=x, start_y=y, grid=map)
-    score = len(reachable_nines)
-    p1 += score
-print(p1)
-
-
-cnt = 0
+ends = []
 while pq:
     path, length = heapq.heappop(pq)
     current = path[-1]
     if length == 10:
-        cnt += 1
+        ends.append((path[0], current))
     else:
         for nb in get_neighbors(current[0], current[1], map):
             if map[nb[0]][nb[1]] == map[current[0]][current[1]] + 1:
                 new_path = path.copy() + [nb]
                 heapq.heappush(pq, (new_path, length + 1))
-print(cnt)
+print(len(set(ends)))
+print(len(ends))
