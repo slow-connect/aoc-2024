@@ -46,3 +46,5 @@ def get_lst_of_lst(day):
             tmp = []
         k += 1
     return it
+
+def pmap(data): print("\n".join("".join(c for c in line) for line in data))
