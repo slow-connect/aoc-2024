@@ -10,14 +10,12 @@ data = aoc.get_str(17)
 data = data.split('\n\n')
 register = data[0].split('\n')
 registers = {'A': int(register[0].split(': ')[1]), 'B': int(register[1].split(': ')[1]), 'C': int(register[2].split(': ')[1])}
-# print(registers)
 init_registers = registers.copy()
 
 
 programm = data[1].split(': ')[1]
 programm = [int(x) for x in programm.split(',')]
 programm_str = ','.join([str(p) for p in programm])
-# print(programm_str)
 
 def combo(val):
     if 0 <= val <= 3:
@@ -63,31 +61,26 @@ opp = {0: adv, 1: bxl, 2: bst, 3:jnz, 4:bxc, 5: out, 6: bdv, 7: cdv}
 output = {0: 'A', 1:'B', 2:'B', 3:'cnt', 4: 'B', 5: 'O', 6: 'B', 7: 'C'}
 programcounter = 0
 output = ''
+print("start")
 while True:
-    # print(programcounter)
     if programcounter + 1 >= len(programm):
-        # print('end')
+        print('end')
         print(output[:-1])
-        # print(registers)
         break
     instruction = programm[programcounter]
-    # print(instruction)
     c = programm[programcounter + 1]
-    # print(instruction, c)
     if instruction == 3:
         cnt = opp[instruction](c)
         if cnt == -1:
             programcounter += 2
         else:
             programcounter = cnt
-        # print('jump to ', programcounter)
     elif instruction == 5:
         output += str(opp[instruction](c)) + ','
         programcounter += 2
     else:
         opp[instruction](c)
         programcounter += 2
-    # print(registers)
 
 def p2():
     # Reverse engineering
