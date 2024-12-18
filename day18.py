@@ -20,30 +20,36 @@ for i in range(1024):
 def dijkstra_day16(start, end, walls):
     visited = set()
     pq = []
-    heapq.heappush(pq, (0, start))
+    heapq.heappush(pq, (0, [start]))
     best_dist = -1
+    best_path = []
     while pq:
-        dist, pos = heapq.heappop(pq)
+        dist, path = heapq.heappop(pq)
+        pos = path[-1]
         if pos in visited:
             continue
         visited.add((pos))
         if pos == end:
             best_dist = dist
+            best_path = path
             break
         x, y = pos
         for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
             if (x + dx, y + dy) not in walls:
                 if ((x + dx, y + dy)) not in visited:
-                    heapq.heappush(pq, (dist + 1, (x + dx, y + dy)))
-    return best_dist
+                    heapq.heappush(pq, (dist + 1, path + [(x + dx, y + dy)]))
+    return best_dist, best_path
 print("Part 1")
-bestdist = dijkstra_day16(start, end, walls)
+bestdist, bestPath = dijkstra_day16(start, end, walls)
 print(bestdist)
 
 print("Part 2")
 k = 1024
 while bestdist != -1:
     k+= 1
+
     walls.add((int(coord[k][0]), int(coord[k][1])))
-    bestdist = dijkstra_day16(start, end, walls)
+    if (int(coord[k][0]), int(coord[k][1])) in bestPath:
+        bestdist, bestPath = dijkstra_day16(start, end, walls)
+
 print(','.join(coord[k]))
