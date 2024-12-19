@@ -61,6 +61,7 @@ opp = {0: adv, 1: bxl, 2: bst, 3:jnz, 4:bxc, 5: out, 6: bdv, 7: cdv}
 output = {0: 'A', 1:'B', 2:'B', 3:'cnt', 4: 'B', 5: 'O', 6: 'B', 7: 'C'}
 programcounter = 0
 output = ''
+print('Part 1:')
 print("start")
 while True:
     if programcounter + 1 >= len(programm):
@@ -82,6 +83,18 @@ while True:
         opp[instruction](c)
         programcounter += 2
 
-def p2():
-    # Reverse engineering
-    pass
+print('Part 2:')
+# Reverse engineering
+# Program: 3,0
+# (2,4): bst B <- A % 8
+# (1,3): bxl B <- B XOR 3
+# (7,5): cdv C <- A / 2^B
+# (1.5): bxl B <- B XOR 5
+# (0,3): adv A <- A / 2^3
+# (4,3): bxc: B <- B XOR C
+# (5,5): out B % 8
+# (3,0): jnz 0 if A != 0
+#
+####
+# end of the prgramm, we need {'A':0, 'B': *, 'C': *}
+registers = {'A': 0, 'B': 0, 'C': 0}
