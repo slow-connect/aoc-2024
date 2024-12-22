@@ -26,7 +26,6 @@ def get_lst(day):
 def get_int(day):
     lst = get_str(day).split('\n')
     it = []
-    print(lst)
     for k in range(len(lst)):
         if lst[k] != '':
             it.append(int(lst[k]))
