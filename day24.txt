@@ -1,0 +1,19 @@
+lines to replace:
+-->
+kbj XOR qjq -> z05
+srp OR jcf -> frn
+bkq AND jhv -> wtt
+jhv XOR bkq -> z39
+x16 AND y16 -> vtj
+y16 XOR x16 -> wnf
+y21 AND x21 -> gmq
+mjj XOR fqr -> z21
+<--
+qjq XOR kbj -> frn
+srp OR jcf -> z05
+bkq AND jhv -> z39
+jhv XOR bkq -> wtt
+x16 AND y16 -> wnf
+x16 XOR y16 -> vtj
+x21 AND y21 -> z21
+mjj XOR fqr -> gmq
